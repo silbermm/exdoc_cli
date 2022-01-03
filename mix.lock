@@ -1,0 +1,4 @@
+%{
+  "nimble_options": {:hex, :nimble_options, "0.3.7", "1e52dd7673d36138b1a5dede183b5d86dff175dc46d104a8e98e396b85b04670", [:mix], [], "hexpm", "2086907e6665c6b6579be54ef5001928df5231f355f71ed258f80a55e9f63633"},
+  "prompt": {:hex, :prompt, "0.7.0", "97325c35c2f025d7378ab42bfb10bdf8e7b510f4aeaf91e4bb2b2f894249084a", [:mix], [{:nimble_options, "~> 0.3.0", [hex: :nimble_options, repo: "hexpm", optional: false]}], "hexpm", "1b0c536cdcd7d113fc6c50c4a3b37750c525e53a7fd6c5d3f2ae5eb04cfc60b6"},
+}
