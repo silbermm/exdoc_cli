@@ -57,21 +57,4 @@ defmodule ExdocCLI.HelpCommand do
       IEx.Helpers.h(:"Elixir.#{topic}")
     end
   end
-
-  def process() do
-    help_txt = """
-    An argument is required. Make sure to pass in the name of a module.
-
-    Examples:
-
-      exdoc Enum
-
-      exdoc Enum.map
-
-      exdoc Enum.map/2
-
-    """
-
-    display(help_txt)
-  end
 end
