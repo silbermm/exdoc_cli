@@ -7,14 +7,19 @@ defmodule ExdocCLI.MixProject do
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript()
     ]
+  end
+
+  def escript do
+    [main_module: ExdocCLI, name: "exdoc", strip_beams: [keep: ["Docs"]]]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:iex, :logger]
     ]
   end
 
