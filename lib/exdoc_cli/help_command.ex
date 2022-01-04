@@ -1,8 +1,8 @@
 defmodule ExdocCLI.HelpCommand do
   @moduledoc """
-  exdoc Module.function
+  exdoc <Module.function/airity>
 
-  Show help for the specified command
+  Shows the builtin help for the specified Module
   """
 
   use Prompt.Command
@@ -21,14 +21,13 @@ defmodule ExdocCLI.HelpCommand do
 
   defp parse({[help: true], _, _}), do: %{help: true}
   defp parse({_opts, [topic | _], _}), do: %{help: false, topic: topic}
+  defp parse(), do: %{}
 
   @doc false
   @impl true
   def process(%{help: true}), do: help()
 
   def process(%{topic: topic}) do
-    # TODO: take last segment with period if it is lowercase
-    # TODO: find airity if passed in
     {last, first_part} =
       topic
       |> String.split(".")
@@ -57,5 +56,22 @@ defmodule ExdocCLI.HelpCommand do
       # not a function name 
       IEx.Helpers.h(:"Elixir.#{topic}")
     end
+  end
+
+  def process() do
+    help_txt = """
+    An argument is required. Make sure to pass in the name of a module.
+
+    Examples:
+
+      exdoc Enum
+
+      exdoc Enum.map
+
+      exdoc Enum.map/2
+
+    """
+
+    display(help_txt)
   end
 end
