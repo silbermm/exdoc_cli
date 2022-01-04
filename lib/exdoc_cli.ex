@@ -26,14 +26,13 @@ defmodule ExdocCLI do
 
   def help(:empty) do
     display("""
+
     An argument is required. Make sure to pass in the name of a module.
 
     Examples:
 
       exdoc Enum
-
       exdoc Enum.map
-
       exdoc Enum.map/2
     """)
   end
