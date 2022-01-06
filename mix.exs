@@ -8,7 +8,7 @@ defmodule ExdocCLI.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      escript: escript()
+      escript: escript(),
       package: package(),
       source_url: "https://github.com/silbermm/exdoc_cli"
     ]
@@ -34,7 +34,9 @@ defmodule ExdocCLI.MixProject do
   def package() do
     [
       licenses: ["GPL-3.0-or-later"],
-      files: ["lib", "mix.exs", "README.md", "CHANGELOG.md", "COPYING*"]
+      files: ["lib", "mix.exs", "README.md", "CHANGELOG.md", "COPYING*"],
+      maintainers: ["Matt Silbernagel"],
+      links: %{:GitHub => "https://github.com/silbermm/prompt"}
     ]
   end
 end
