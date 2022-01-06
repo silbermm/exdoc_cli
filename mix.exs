@@ -10,6 +10,10 @@ defmodule ExdocCLI.MixProject do
       deps: deps(),
       escript: escript(),
       package: package(),
+      dialyzer: [
+        # plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
+        flags: ["-Wunmatched_returns", :error_handling, :race_conditions, :underspecs]
+      ],
       source_url: "https://github.com/silbermm/exdoc_cli"
     ]
   end
@@ -27,7 +31,8 @@ defmodule ExdocCLI.MixProject do
   defp deps do
     [
       {:prompt, "~> 0.7.2"},
-      {:ex_doc, ">= 0.26.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.26.0", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
     ]
   end
 
