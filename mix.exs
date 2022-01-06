@@ -5,10 +5,12 @@ defmodule ExdocCLI.MixProject do
     [
       app: :exdoc_cli,
       version: "0.1.1",
-      elixir: "~> 1.13",
+      elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       escript: escript()
+      package: package(),
+      source_url: "https://github.com/silbermm/exdoc_cli"
     ]
   end
 
@@ -16,18 +18,23 @@ defmodule ExdocCLI.MixProject do
     [main_module: ExdocCLI, name: "exdoc", strip_beams: [keep: ["Docs"]]]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:iex, :logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:prompt, path: "../prompt/"}
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:prompt, "~> 0.7.2"},
+      {:ex_doc, ">= 0.26.0", only: :dev, runtime: false}
+    ]
+  end
+
+  def package() do
+    [
+      licenses: ["GPL-3.0-or-later"],
+      files: ["lib", "mix.exs", "README.md", "CHANGELOG.md", "COPYING*"]
     ]
   end
 end

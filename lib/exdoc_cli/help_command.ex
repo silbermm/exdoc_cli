@@ -1,9 +1,5 @@
 defmodule ExdocCLI.HelpCommand do
-  @moduledoc """
-  exdoc <Module.function/airity>
-
-  Shows the builtin help for the specified Module
-  """
+  @moduledoc false
 
   use Prompt.Command
   require IEx.Helpers
@@ -22,6 +18,18 @@ defmodule ExdocCLI.HelpCommand do
   defp parse({[help: true], _, _}), do: %{help: true}
   defp parse({_opts, [topic | _], _}), do: %{help: false, topic: topic}
   defp parse(), do: %{}
+
+  @doc false
+  @impl true
+  def help() do
+    help = """
+    exdoc <Module.function/airity>
+
+    Shows the builtin help for the specified Module
+    """
+
+    display(help)
+  end
 
   @doc false
   @impl true
