@@ -1,5 +1,16 @@
 # Exdoc CLI
 
-Work in progress
+A CLI equivilent to the IEx h/1 helper.
 
-A CLI for displaying exdoc without having to connect to an IEx session
+## Installation
+
+Install with `mix escript.install hex exdoc_cli`
+
+Once installed, run `exdoc <Module>`
+
+## Examples
+  * exdoc Enum
+  * exdoc Enum.flat_map
+  * exdoc Enum.reduce/2
+
+![Example Commands](./example.gif)
