@@ -4,7 +4,7 @@ defmodule ExdocCLI.MixProject do
   def project do
     [
       app: :exdoc_cli,
-      version: "0.1.1",
+      version: "0.1.2-beta",
       description: "A simple CLI for displaying built-in Elixir docs",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,

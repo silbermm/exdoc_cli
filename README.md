@@ -13,4 +13,4 @@ Once installed, run `exdoc <Module>`
   * exdoc Enum.flat_map
   * exdoc Enum.reduce/2
 
-![Example Commands](./example.gif)
+![Example Commands](https://silbernagel.dev/img/exdoc_usage.gif)
