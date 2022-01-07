@@ -45,7 +45,8 @@ defmodule ExdocCLI do
   """
 
   @doc false
-  def main(argv), do: process(argv, [], fallback: ExdocCLI.HelpCommand)
+  def main(argv),
+    do: process(argv, [], fallback: ExdocCLI.HelpCommand)
 
   @doc false
   def help do

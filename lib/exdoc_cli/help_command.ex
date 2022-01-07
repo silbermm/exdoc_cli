@@ -32,7 +32,7 @@ defmodule ExdocCLI.HelpCommand do
 
   defp parse({[help: true], _, _}), do: %{help: true}
   defp parse({_opts, [topic | _], _}), do: %{help: false, topic: topic}
-  defp parse(), do: %{}
+  defp parse(), do: %{help: true}
 
   @doc false
   @impl true
