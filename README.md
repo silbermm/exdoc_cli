@@ -1,5 +1,9 @@
 # Exdoc CLI
 
+
+![](https://github.com/silbermm/exdoc_cli/workflows/Build/badge.svg)
+[![Hex.pm](https://img.shields.io/hexpm/v/exdoc_cli?style=flat-square)](https://hexdocs.pm/exdoc_cli/ExdocCLI.html#content)
+
 A CLI equivilent to the IEx h/1 helper.
 
 ## Installation
