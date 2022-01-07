@@ -14,4 +14,3 @@ Once installed, run `exdoc <Module>`
   * exdoc Enum.reduce/2
 
 ![Example Commands](./example.gif)
-![More Example Commands](./example2.gif)
