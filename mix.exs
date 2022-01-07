@@ -4,14 +4,14 @@ defmodule ExdocCLI.MixProject do
   def project do
     [
       app: :exdoc_cli,
-      version: "0.1.2-beta",
+      version: "0.1.1",
+      description: "A simple CLI for displaying built-in Elixir docs",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       escript: escript(),
       package: package(),
       dialyzer: [
-        # plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
         flags: ["-Wunmatched_returns", :error_handling, :race_conditions, :underspecs]
       ],
       source_url: "https://github.com/silbermm/exdoc_cli"
