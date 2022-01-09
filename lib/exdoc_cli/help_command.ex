@@ -50,6 +50,10 @@ defmodule ExdocCLI.HelpCommand do
   @impl true
   def process(%{help: true}), do: help()
 
+  def process(%{topic: <<":" <> erlang_module>>}) do
+    IEx.Helpers.h(:"#{erlang_module}")
+  end
+
   def process(%{topic: topic}) do
     {last, first_part} =
       topic
