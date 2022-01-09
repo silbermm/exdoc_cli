@@ -9,6 +9,7 @@ defmodule ExdocCLI.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      docs: docs(),
       escript: escript(),
       package: package(),
       dialyzer: [
@@ -33,6 +34,19 @@ defmodule ExdocCLI.MixProject do
       {:prompt, "~> 0.7.2"},
       {:ex_doc, ">= 0.26.0", only: :dev, runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "ExdocCLI",
+      api_reference: false,
+      extras: [
+        "README.md": [filename: "readme", title: "Readme"],
+        "CHANGELOG.md": [filename: "changelog", title: "Changelog"],
+        LICENSE: [filename: "license", title: "License"]
+      ],
+      authors: ["Matt Silbernagel"]
     ]
   end
 
