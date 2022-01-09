@@ -44,7 +44,7 @@ defmodule ExdocCLI.MixProject do
       extras: [
         "README.md": [filename: "readme", title: "Readme"],
         "CHANGELOG.md": [filename: "changelog", title: "Changelog"],
-        LICENSE: [filename: "license", title: "License"]
+        COPYING: [filename: "copying", title: "License"]
       ],
       authors: ["Matt Silbernagel"]
     ]
