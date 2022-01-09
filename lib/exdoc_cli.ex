@@ -45,8 +45,10 @@ defmodule ExdocCLI do
   """
 
   @doc false
-  def main(argv),
-    do: process(argv, [], fallback: ExdocCLI.HelpCommand)
+  def main(argv) do
+    IEx.configure(colors: [enabled: true])
+    process(argv, [], fallback: ExdocCLI.HelpCommand)
+  end
 
   @doc false
   def help do
