@@ -14,7 +14,7 @@ defmodule ExdocCLITest do
     assert capture_io("", fn ->
              result = ExdocCLI.main(["--version"])
              assert result == 0
-           end) =~ "0.1.2-beta"
+           end) =~ "0.1.2"
   end
 
   test "shows Enum.map docs" do
