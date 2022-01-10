@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.2] - 2022-01-09
 ### Added
-  * Support for erlang documentation (if erlang is comiled with docs)
+  * Support for erlang documentation (if erlang is compiled with docs)
   * Support for color
 
 ### Documentation
