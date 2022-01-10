@@ -51,7 +51,16 @@ defmodule ExdocCLI.HelpCommand do
   def process(%{help: true}), do: help()
 
   def process(%{topic: <<":" <> erlang_module>>}) do
-    IEx.Helpers.h(:"#{erlang_module}")
+    {last, first_part} =
+      erlang_module
+      |> String.split(".")
+      |> List.pop_at(-1)
+
+    if first_part == [] do
+      IEx.Helpers.h(:"#{erlang_module}")
+    else
+      help_with_airity(last, "#{Enum.join(first_part, ".")}")
+    end
   end
 
   def process(%{topic: topic}) do
@@ -66,22 +75,26 @@ defmodule ExdocCLI.HelpCommand do
     if first_letter == String.downcase(first_letter) do
       # yes it is
       # is the airity passed in?
-      case String.split(last, "/") do
-        [function_name, airity] ->
-          IEx.Helpers.h(
-            {:"Elixir.#{Enum.join(first_part, ".")}", String.to_atom(function_name),
-             String.to_integer(airity)}
-          )
-
-        [function_name] ->
-          IEx.Helpers.h({:"Elixir.#{Enum.join(first_part, ".")}", String.to_atom(function_name)})
-
-        _ ->
-          display("error", error: true)
-      end
+      # "Elixir.#{Enum.join(first_part, ".")}"
+      help_with_airity(last, "Elixir.#{Enum.join(first_part, ".")}")
     else
       # not a function name 
       IEx.Helpers.h(:"Elixir.#{topic}")
+    end
+  end
+
+  defp help_with_airity(last_word_of_argument, first_part_of_argument) do
+    case String.split(last_word_of_argument, "/") do
+      [function_name, airity] ->
+        IEx.Helpers.h(
+          {:"#{first_part_of_argument}", String.to_atom(function_name), String.to_integer(airity)}
+        )
+
+      [function_name] ->
+        IEx.Helpers.h({:"#{first_part_of_argument}", String.to_atom(function_name)})
+
+      _ ->
+        display("error", error: true)
     end
   end
 end
