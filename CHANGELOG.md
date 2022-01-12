@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   * Pull Request Template
 
+### Fixed
+  * Allow erlang modules.function/airity i.e `:ets.new/2`
+
 ## [0.1.2] - 2022-01-09
 ### Added
   * Support for erlang documentation (if erlang is compiled with docs)
