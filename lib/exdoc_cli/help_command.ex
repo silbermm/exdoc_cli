@@ -24,23 +24,30 @@ defmodule ExdocCLI.HelpCommand do
   def init(argv) do
     argv
     |> OptionParser.parse(
-      strict: [help: :boolean],
-      aliases: [h: :help]
+      strict: [help: :boolean, open: :boolean],
+      aliases: [h: :help, o: :open]
     )
     |> parse()
   end
 
   defp parse({[help: true], _, _}), do: %{help: true}
-  defp parse({_opts, [topic | _], _}), do: %{help: false, topic: topic}
-  defp parse(), do: %{help: true}
+
+  defp parse({opts, [topic | _], _}) do
+    open = Keyword.get(opts, :open, false)
+    %{help: false, topic: topic, open: open}
+  end
 
   @doc false
   @impl true
   def help() do
     help = """
-    exdoc <Module.function/airity>
+    Shows the builtin help for the specified Module.
 
-    Shows the builtin help for the specified Module
+    exdoc <Module> or <Module.function> or <Module.function/airity>
+
+      --open, -o  Opens the Module in your $ELIXIR_EDITOR
+      --help, -h  Shows this help message
+
     """
 
     display(help)
@@ -50,20 +57,24 @@ defmodule ExdocCLI.HelpCommand do
   @impl true
   def process(%{help: true}), do: help()
 
-  def process(%{topic: <<":" <> erlang_module>>}) do
+  def process(%{topic: <<":" <> erlang_module>>, open: open}) do
     {last, first_part} =
       erlang_module
       |> String.split(".")
       |> List.pop_at(-1)
 
     if first_part == [] do
-      IEx.Helpers.h(:"#{erlang_module}")
+      if open do
+        IEx.Helpers.open(:"#{erlang_module}")
+      else
+        IEx.Helpers.h(:"#{erlang_module}")
+      end
     else
-      help_with_airity(last, "#{Enum.join(first_part, ".")}")
+      help_with_airity(last, "#{Enum.join(first_part, ".")}", open)
     end
   end
 
-  def process(%{topic: topic}) do
+  def process(%{topic: topic, open: open}) do
     {last, first_part} =
       topic
       |> String.split(".")
@@ -76,22 +87,37 @@ defmodule ExdocCLI.HelpCommand do
       # yes it is
       # is the airity passed in?
       # "Elixir.#{Enum.join(first_part, ".")}"
-      help_with_airity(last, "Elixir.#{Enum.join(first_part, ".")}")
+      help_with_airity(last, "Elixir.#{Enum.join(first_part, ".")}", open)
     else
-      # not a function name 
-      IEx.Helpers.h(:"Elixir.#{topic}")
+      if open do
+        IEx.Helpers.open(:"Elixir.#{topic}")
+      else
+        IEx.Helpers.h(:"Elixir.#{topic}")
+      end
     end
   end
 
-  defp help_with_airity(last_word_of_argument, first_part_of_argument) do
+  defp help_with_airity(last_word_of_argument, first_part_of_argument, open) do
     case String.split(last_word_of_argument, "/") do
       [function_name, airity] ->
-        IEx.Helpers.h(
-          {:"#{first_part_of_argument}", String.to_atom(function_name), String.to_integer(airity)}
-        )
+        if open do
+          IEx.Helpers.open(
+            {:"#{first_part_of_argument}", String.to_atom(function_name),
+             String.to_integer(airity)}
+          )
+        else
+          IEx.Helpers.h(
+            {:"#{first_part_of_argument}", String.to_atom(function_name),
+             String.to_integer(airity)}
+          )
+        end
 
       [function_name] ->
-        IEx.Helpers.h({:"#{first_part_of_argument}", String.to_atom(function_name)})
+        if open do
+          IEx.Helpers.open({:"#{first_part_of_argument}", String.to_atom(function_name)})
+        else
+          IEx.Helpers.h({:"#{first_part_of_argument}", String.to_atom(function_name)})
+        end
 
       _ ->
         display("error", error: true)
