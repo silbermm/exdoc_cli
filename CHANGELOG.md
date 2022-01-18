@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   * Pull Request Template
   * Updated ex_doc to latest version (0.27.2)
+  * Added new `--open` flag that calls into the `IEx.Helpers.open/1` function for opening the source code in your editor
 
 ### Fixed
   * Allow erlang modules.function/airity i.e `:ets.new/2`
