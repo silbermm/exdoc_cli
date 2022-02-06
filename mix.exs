@@ -55,7 +55,7 @@ defmodule ExdocCLI.MixProject do
       licenses: ["GPL-3.0-or-later"],
       files: ["lib", "mix.exs", "README.md", "CHANGELOG.md", "COPYING*"],
       maintainers: ["Matt Silbernagel"],
-      links: %{:GitHub => "https://github.com/silbermm/prompt"}
+      links: %{:GitHub => "https://github.com/silbermm/exdoc_cli"}
     ]
   end
 end
