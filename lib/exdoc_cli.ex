@@ -21,14 +21,26 @@ defmodule ExdocCLI do
 
   Install with `mix escript.install hex exdoc_cli`
 
-  Once installed, run `exdoc <Module>`
+  > #### ASDF {: .info}
+  >
+  > If you installed Elixir with asdf, be sure to run 
+  > `asdf reshim elixir`
+
+
+  Once installed, run 
+  ```
+  exdoc <Module>
+  ```
 
   ## Examples
 
-  * exdoc Enum
-  * exdoc Enum.flat_map
-  * exdoc Enum.reduce/2
-
+  ```bash
+  $ exdoc Enum
+  $ exdoc Enum.flat_map
+  $ exdoc Enum.reduce/2
+  $ exdoc :ets.new/2 --open
+  ```
+ 
   """
 
   use Prompt, otp_app: :exdoc_cli
@@ -63,8 +75,8 @@ defmodule ExdocCLI do
     Examples:
 
       exdoc Enum
-      exdoc Enum.map
       exdoc Enum.map/2
+      exdoc :ets --open
     """)
   end
 end
