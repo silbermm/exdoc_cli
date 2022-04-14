@@ -27,7 +27,7 @@ defmodule ExdocCLI do
   > `asdf reshim elixir`
 
 
-  Once installed, run 
+  Once installed, run
   ```
   exdoc <Module>
   ```
@@ -47,17 +47,20 @@ defmodule ExdocCLI do
 
   @help_txt """
 
-    exdoc <Module.function/airity>  
+    exdoc <Module.function/airity>
 
     Shows the builtin documentation for the specified Module
 
     Available options:
+      --open        Opens the Module in your $ELIXIR_EDITOR
+
       --help, -h    show this help message
       --version, -v show the version
   """
 
   @doc false
   def main(argv) do
+    # enables the colors in output
     IEx.configure(colors: [enabled: true])
     process(argv, [], fallback: ExdocCLI.HelpCommand)
   end
