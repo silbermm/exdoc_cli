@@ -15,9 +15,11 @@ Install with `mix escript.install hex exdoc_cli`
 Once installed, run `exdoc <Module>`
 
 ## Examples
-  * exdoc Enum
-  * exdoc Enum.flat_map
-  * exdoc Enum.reduce/2
+```bash
+$ exdoc Enum
+$ exdoc Enum.flat_map
+$ exdoc Enum.reduce/2
+```
 
 ## View source code
 

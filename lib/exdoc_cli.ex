@@ -21,31 +21,46 @@ defmodule ExdocCLI do
 
   Install with `mix escript.install hex exdoc_cli`
 
-  Once installed, run `exdoc <Module>`
+  > #### ASDF {: .info}
+  >
+  > If you installed Elixir with asdf, be sure to run 
+  > `asdf reshim elixir`
+
+
+  Once installed, run
+  ```
+  exdoc <Module>
+  ```
 
   ## Examples
 
-  * exdoc Enum
-  * exdoc Enum.flat_map
-  * exdoc Enum.reduce/2
-
+  ```bash
+  $ exdoc Enum
+  $ exdoc Enum.flat_map
+  $ exdoc Enum.reduce/2
+  $ exdoc :ets.new/2 --open
+  ```
+ 
   """
 
   use Prompt, otp_app: :exdoc_cli
 
   @help_txt """
 
-    exdoc <Module.function/airity>  
+    exdoc <Module.function/airity>
 
     Shows the builtin documentation for the specified Module
 
     Available options:
+      --open        Opens the Module in your $ELIXIR_EDITOR
+
       --help, -h    show this help message
       --version, -v show the version
   """
 
   @doc false
   def main(argv) do
+    # enables the colors in output
     IEx.configure(colors: [enabled: true])
     process(argv, [], fallback: ExdocCLI.HelpCommand)
   end
@@ -63,8 +78,8 @@ defmodule ExdocCLI do
     Examples:
 
       exdoc Enum
-      exdoc Enum.map
       exdoc Enum.map/2
+      exdoc :ets --open
     """)
   end
 end
