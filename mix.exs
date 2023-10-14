@@ -13,7 +13,7 @@ defmodule ExdocCLI.MixProject do
       escript: escript(),
       package: package(),
       dialyzer: [
-        flags: ["-Wunmatched_returns", :error_handling, :race_conditions, :underspecs]
+        flags: ["-Wunmatched_returns", :error_handling, :underspecs]
       ],
       source_url: "https://github.com/silbermm/exdoc_cli"
     ]
