@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2023-10-13
+### Updated
+  * ExDoc 0.28.2
+  * Improved Docs
 
 ## [0.1.3] - 2022-01-22
 ### Added
@@ -28,7 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 Initial Release to Hex
 
-[Unreleased]: https://github.com/silbermm/exdoc_cli/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/silbermm/exdoc_cli/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/silbermm/exdoc_cli/releases/tag/v0.1.4
 [0.1.3]: https://github.com/silbermm/exdoc_cli/releases/tag/v0.1.3
 [0.1.2]: https://github.com/silbermm/exdoc_cli/releases/tag/v0.1.2
 [0.1.1]: https://github.com/silbermm/exdoc_cli/releases/tag/v0.1.1
