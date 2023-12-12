@@ -20,7 +20,7 @@ defmodule ExdocCLI.MixProject do
   end
 
   def escript do
-    [main_module: ExdocCLI, name: "exdoc", strip_beams: [keep: ["Docs"]]]
+    [main_module: ExdocCLI.Entry, name: "exdoc", strip_beams: [keep: ["Docs"]]]
   end
 
   def application do
@@ -31,7 +31,8 @@ defmodule ExdocCLI.MixProject do
 
   defp deps do
     [
-      {:prompt, "~> 0.7.2"},
+      #{:prompt, "~> 0.9.4"},
+      {:prompt, path: "../prompt"},
       {:ex_doc, ">= 0.28.2", only: :dev, runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
     ]

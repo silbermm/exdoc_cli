@@ -1,63 +1,36 @@
-# Exdoc CLI - Commandline tool for showing Elixir Docs
-# Copyright (C) 2022 Matt Silbernagel
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+defmodule ExdocCLI.DefaultCommand do
+  @moduledoc """
 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-defmodule ExdocCLI.HelpCommand do
-  @moduledoc false
+  exdoc <Module.function/airity>
 
+  Shows the builtin documentation for the specified Module
+
+  Available options:
+    --open        Opens the Module in your $ELIXIR_EDITOR
+
+    --help, -h    show this help message
+    --version, -v show the version
+  """
   use Prompt.Command
   require IEx.Helpers
 
-  @impl true
-  @doc false
-  def init(argv) do
-    argv
-    |> OptionParser.parse(
-      strict: [help: :boolean, open: :boolean],
-      aliases: [h: :help, o: :open]
-    )
-    |> parse()
+  def init(args) do
+    # a leftover arg is required here for the module/function name    
+    topic = List.first(args.leftover, nil)
+    Map.put(args, :topic, topic)
   end
 
-  defp parse({[help: true], _, _}), do: %{help: true}
-
-  defp parse({opts, [topic | _], _}) do
-    open = Keyword.get(opts, :open, false)
-    %{help: false, topic: topic, open: open}
-  end
-
-  @doc false
-  @impl true
-  def help() do
-    help = """
-    Shows the builtin help for the specified Module.
-
-    exdoc <Module> or <Module.function> or <Module.function/airity>
-
-      --open, -o  Opens the Module in your $ELIXIR_EDITOR
-      --help, -h  Shows this help message
-
-    """
-
-    display(help)
-  end
-
-  @doc false
   @impl true
   def process(%{help: true}), do: help()
+  
+  def process(%{topic: nil}) do
+    display("Required argument was not provided.", color: :red)
+    help()
+  end
 
   def process(%{topic: <<":" <> erlang_module>>, open: open}) do
+    IEx.configure(colors: [enabled: true])
+
     {last, first_part} =
       erlang_module
       |> String.split(".")
@@ -75,6 +48,7 @@ defmodule ExdocCLI.HelpCommand do
   end
 
   def process(%{topic: topic, open: open}) do
+    IEx.configure(colors: [enabled: true])
     {last, first_part} =
       topic
       |> String.split(".")
