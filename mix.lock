@@ -8,5 +8,5 @@
   "makeup_erlang": {:hex, :makeup_erlang, "0.1.1", "3fcb7f09eb9d98dc4d208f49cc955a34218fc41ff6b84df7c75b3e6e533cc65f", [:mix], [{:makeup, "~> 1.0", [hex: :makeup, repo: "hexpm", optional: false]}], "hexpm", "174d0809e98a4ef0b3309256cbf97101c6ec01c4ab0b23e926a9e17df2077cbb"},
   "nimble_options": {:hex, :nimble_options, "0.3.7", "1e52dd7673d36138b1a5dede183b5d86dff175dc46d104a8e98e396b85b04670", [:mix], [], "hexpm", "2086907e6665c6b6579be54ef5001928df5231f355f71ed258f80a55e9f63633"},
   "nimble_parsec": {:hex, :nimble_parsec, "1.2.2", "b99ca56bbce410e9d5ee4f9155a212e942e224e259c7ebbf8f2c86ac21d4fa3c", [:mix], [], "hexpm", "98d51bd64d5f6a2a9c6bb7586ee8129e27dfaab1140b5a4753f24dac0ba27d2f"},
-  "prompt": {:hex, :prompt, "0.9.4", "079692c4114c80613fe0c25a5e5e18eddce5e02a612a2153035bf65cc1f280f9", [:mix], [{:nimble_options, "~> 0.3.0", [hex: :nimble_options, repo: "hexpm", optional: false]}], "hexpm", "7c45162aa0e3a096d7ab13a5e4a2cd8a9d36d25fe41e9a5820e8fafcbb15baf6"},
+  "prompt": {:hex, :prompt, "0.10.0", "91bc0912ad3a3619faa404211a65c197afb7bcac1c8c97c34872b0ad3bba4b40", [:mix], [{:nimble_options, "~> 0.3.0", [hex: :nimble_options, repo: "hexpm", optional: false]}], "hexpm", "53f74d766442a56cc878631233de012a36a6c4e8a5d24b96f12246e339483fce"},
 }

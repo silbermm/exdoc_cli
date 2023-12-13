@@ -31,8 +31,7 @@ defmodule ExdocCLI.MixProject do
 
   defp deps do
     [
-      #{:prompt, "~> 0.9.4"},
-      {:prompt, path: "../prompt"},
+      {:prompt, "~> 0.10.0"},
       {:ex_doc, ">= 0.28.2", only: :dev, runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
     ]
