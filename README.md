@@ -4,7 +4,7 @@
 ![](https://github.com/silbermm/exdoc_cli/workflows/Build%20and%20Test/badge.svg)
 [![Hex.pm](https://img.shields.io/hexpm/v/exdoc_cli?style=flat-square)](https://hexdocs.pm/exdoc_cli/ExdocCLI.html#content)
 
-A CLI equivilent to the IEx h/1 helper.
+A CLI equivalent to the IEx h/1 helper.
 
 ![Example Commands](https://raw.githubusercontent.com/silbermm/exdoc_cli/main/exdoc_usage.gif)
 

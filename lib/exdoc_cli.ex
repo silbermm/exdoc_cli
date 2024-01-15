@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 defmodule ExdocCLI do
   @moduledoc """
-  A CLI equivilent to the IEx h/1 helper.
+  A CLI equivalent to the IEx h/1 helper.
 
   ## Installation
 

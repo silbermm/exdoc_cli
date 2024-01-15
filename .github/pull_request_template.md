@@ -6,7 +6,7 @@
 
 - [ ] fixed|updated|added unit tests and integration tests for each feature (if applicable).
 - [ ] No error nor warning in the console.
-- [ ] I added any relevent info to the [Changelog](./CHANGELOG.md).
+- [ ] I added any relevant info to the [Changelog](./CHANGELOG.md).
 
 ## How to test?
 
